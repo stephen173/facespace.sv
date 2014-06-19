@@ -1,0 +1,43 @@
+
+<div class="container">
+	<div id="content" class='row-fluid'>
+<h1><%= @user.name %></h1>
+<br/>
+		<div class"col-xs-6 col-sm-3">
+
+<em>
+	<%= @user.bio %>
+</em>
+
+		</div>
+		<div class"col-md-4 .col-md-offset-4">
+	
+
+							<div class="well well-sm">
+								<%= form_for Wallpost.new, url: '/make_post' do |f| %>
+									<fieldset>					
+										<%= f.hidden_field :user_id, value: @user.id %>
+										<div class="form-group">
+											<label class="col-md-3 control-label" for="name"><%= f.label :post_comment %></label>
+											<div class="col-md-9"><%= f.text_area :post_comment %></div>
+										</div>					
+										<div class="form-group">
+										  <div class="col-md-12">
+											  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+										  </div>
+										</div>
+									</fieldset>				
+								<% end %>
+							</div>
+
+							<div class="well well-sm">
+								<% @wallposts.each do |wallpost| %>
+									<strong> <%= wallpost.post_comment %> </strong> 
+									<br/>
+									<br/>
+								<% end %>
+							</div>
+		</div>
+	</div>
+</div>
+

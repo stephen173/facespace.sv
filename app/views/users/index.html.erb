@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-striped">
+			<% @users.each do |user| %>
+			<tr>
+				<td><a href="/users/<%= user.id %>"><%= if user.name.nil? then user.email else user.name end %></a></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
